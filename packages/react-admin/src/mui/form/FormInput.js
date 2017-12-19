@@ -9,7 +9,7 @@ const styles = theme => ({
     input: { width: theme.spacing.unit * 32 },
 });
 
-export const FormInput = ({ className, classes, input, ...rest }) =>
+export const FormInput = ({ className, classes = {}, input, ...rest }) =>
     input ? (
         <div
             className={classnames(
@@ -23,10 +23,7 @@ export const FormInput = ({ className, classes, input, ...rest }) =>
                     {input}
                 </Labeled>
             ) : (
-                React.cloneElement(input, {
-                    classes: { root: classes.input },
-                    ...rest,
-                })
+                React.cloneElement(input, rest)
             )}
         </div>
     ) : null;
