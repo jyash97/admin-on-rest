@@ -19,11 +19,17 @@ export const FormInput = ({ className, classes = {}, input, ...rest }) =>
             )}
         >
             {input.props.addLabel ? (
-                <Labeled {...input.props} {...rest}>
-                    {input}
+                <Labeled {...input.props}>
+                    {React.cloneElement(input, {
+                        classes: { root: classes.input },
+                        ...rest,
+                    })}
                 </Labeled>
             ) : (
-                React.cloneElement(input, rest)
+                React.cloneElement(input, {
+                    classes: { root: classes.input },
+                    ...rest,
+                })
             )}
         </div>
     ) : null;
